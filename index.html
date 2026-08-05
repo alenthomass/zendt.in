@@ -28,29 +28,65 @@
         radial-gradient(ellipse 900px 600px at 5% 95%, rgba(201,130,90,0.12), transparent 55%),
         #0A0A0A;
     }
+    @media (max-width: 639px) {
+      .zendt-bg-fixed { background: #0A0A0A; }
+      .zendt-features-section { background: #0A0A0A !important; }
+      .zendt-cta-box { background: #0F0F0F !important; }
+    }
     ::selection { background: #F5F5F5; color: #0A0A0A; }
     html { scroll-behavior: smooth; }
     a { color: inherit; text-decoration: none; transition: opacity 0.15s ease; }
     a:hover { opacity: 0.75; }
     input::placeholder { color: rgba(255,255,255,0.35); }
+    @keyframes zendt-menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </helmet>
 
 <div class="zendt-bg-fixed"></div>
 <div style="color:#F5F5F5; font-family:'Cairo',sans-serif; min-height:100vh; overflow-x:hidden; position:relative; z-index:1;">
 
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
   <nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px clamp(16px,5vw,48px); background:rgba(10,10,10,0.75); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.08);">
     <a href="#" style="display:flex; align-items:center; gap:9px; font-family:'Clash Display',sans-serif; font-weight:600; font-size:20px; letter-spacing:-0.02em; flex-shrink:0;">
       <img src="/logo-transparent.png" alt="Zendt" style="width:30px; height:30px; display:block; object-fit:contain;">
       Zendt
     </a>
-    <div style="display:flex; align-items:center; gap:clamp(12px,3vw,36px); overflow-x:auto; scrollbar-width:none; min-width:0;">
+    <div style="display:flex; align-items:center; gap:clamp(12px,3vw,36px);">
       <a href="#how-it-works" style="font-size:14px; color:rgba(255,255,255,0.65); font-weight:500; white-space:nowrap;">How it works</a>
       <a href="#features" style="font-size:14px; color:rgba(255,255,255,0.65); font-weight:500; white-space:nowrap;">Product</a>
       <a href="#company" style="font-size:14px; color:rgba(255,255,255,0.65); font-weight:500; white-space:nowrap;">Company</a>
     </div>
     <a href="#" onClick="{{ openWaitlist }}" style="font-size:14px; font-weight:600; background:#F5F5F5; color:#0A0A0A; padding:10px clamp(14px,3vw,20px); border-radius:8px; white-space:nowrap; flex-shrink:0; transition:transform 0.2s ease, box-shadow 0.2s ease;" style-hover="transform:translateY(-1px); box-shadow:0 6px 20px rgba(0,0,0,0.35);">Join waitlist</a>
   </nav>
+  </sc-if>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:rgba(10,10,10,0.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.08);">
+    <a href="#" onClick="{{ closeMenu }}" style="display:flex; align-items:center; gap:8px; font-family:'Clash Display',sans-serif; font-weight:600; font-size:18px; letter-spacing:-0.02em;">
+      <img src="/logo-transparent.png" alt="Zendt" style="width:28px; height:28px; display:block; object-fit:contain;">
+      Zendt
+    </a>
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuAriaLabel }}" style="display:flex; align-items:center; justify-content:center; width:44px; height:44px; margin:0; padding:0; border:1px solid rgba(255,255,255,0.12); border-radius:10px; background:rgba(255,255,255,0.04); color:#F5F5F5; cursor:pointer; flex-shrink:0;">
+      <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </sc-if>
+      <sc-if value="{{ notMenuOpen }}" hint-placeholder-val="{{ true }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </sc-if>
+    </button>
+  </nav>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMenu }}" style="position:fixed; inset:0; z-index:49; background:rgba(0,0,0,0.55); backdrop-filter:blur(4px);">
+      <div onClick="{{ stopPropagation }}" style="position:absolute; top:62px; left:12px; right:12px; background:#0F0F0F; border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:8px 8px 16px; box-shadow:0 24px 64px rgba(0,0,0,0.5); animation:zendt-menu-in 0.2s ease;">
+        <a href="#how-it-works" onClick="{{ closeMenu }}" style="display:block; font-size:16px; font-weight:500; color:#F5F5F5; padding:16px 14px; border-radius:10px;">How it works</a>
+        <a href="#features" onClick="{{ closeMenu }}" style="display:block; font-size:16px; font-weight:500; color:#F5F5F5; padding:16px 14px; border-radius:10px;">Product</a>
+        <a href="#company" onClick="{{ closeMenu }}" style="display:block; font-size:16px; font-weight:500; color:#F5F5F5; padding:16px 14px; border-radius:10px;">Company</a>
+        <div style="height:1px; background:rgba(255,255,255,0.08); margin:8px 14px;"></div>
+        <a href="#" onClick="{{ openWaitlistFromMenu }}" style="display:block; margin:8px 8px 0; font-size:15px; font-weight:600; text-align:center; background:#F5F5F5; color:#0A0A0A; padding:14px 20px; border-radius:10px;">Join waitlist</a>
+      </div>
+    </div>
+  </sc-if>
+  </sc-if>
 
   <section style="padding:clamp(64px,12vw,110px) clamp(20px,5vw,48px) clamp(48px,8vw,80px); display:flex; flex-direction:column; align-items:center; text-align:center;">
     <div style="font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:28px;">The freelancer's toolkit</div>
@@ -258,7 +294,7 @@
     </div>
   </section>
 
-  <section id="features" style="padding:clamp(64px,10vw,100px) clamp(20px,5vw,48px); background:linear-gradient(180deg, rgba(201,130,90,0.04), #0D0D0D 40%); border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06);">
+  <section id="features" class="zendt-features-section" style="padding:clamp(64px,10vw,100px) clamp(20px,5vw,48px); background:linear-gradient(180deg, rgba(201,130,90,0.04), #0D0D0D 40%); border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06);">
     <div style="max-width:1200px; margin:0 auto;">
       <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:56px; flex-wrap:wrap; gap:24px;">
         <div style="max-width:560px;">
@@ -356,7 +392,7 @@
   </section>
 
   <section id="cta" style="padding:clamp(64px,10vw,100px) clamp(20px,5vw,48px) 60px; text-align:center;">
-    <div style="max-width:700px; margin:0 auto; border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:clamp(36px,8vw,64px) clamp(20px,5vw,40px); background:linear-gradient(160deg, rgba(201,130,90,0.08), #0F0F0F 60%);">
+    <div class="zendt-cta-box" style="max-width:700px; margin:0 auto; border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:clamp(36px,8vw,64px) clamp(20px,5vw,40px); background:linear-gradient(160deg, rgba(201,130,90,0.08), #0F0F0F 60%);">
       <h2 style="font-family:'Clash Display',sans-serif; font-size:clamp(24px,5vw,34px); font-weight:600; letter-spacing:-0.02em; margin:0 0 16px;">Ready to simplify invoicing?</h2>
       <p style="font-size:16px; color:rgba(255,255,255,0.55); margin:0 0 32px;">Join the waitlist to get early access to Zendt.</p>
       <a href="#" onClick="{{ openWaitlist }}" style="display:inline-block; font-size:15px; font-weight:600; background:#F5F5F5; color:#0A0A0A; padding:15px 32px; border-radius:8px; transition:transform 0.2s ease, box-shadow 0.2s ease;" style-hover="transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,0.4);">Join the waitlist</a>
@@ -454,7 +490,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { openFaq: 0, showWaitlist: false, email: '', submitted: false, isMobile: false, dashboardTab: 'overview' };
+  state = { openFaq: 0, showWaitlist: false, email: '', submitted: false, isMobile: false, menuOpen: false, dashboardTab: 'overview' };
   componentDidMount() {
     this.checkMobile();
     window.addEventListener('resize', this.checkMobile);
@@ -462,7 +498,13 @@ class Component extends DCLogic {
   componentWillUnmount() {
     window.removeEventListener('resize', this.checkMobile);
   }
-  checkMobile = () => this.setState({ isMobile: window.innerWidth < 640 });
+  checkMobile = () => {
+    const mobile = window.innerWidth < 640;
+    this.setState(s => ({ isMobile: mobile, menuOpen: mobile ? s.menuOpen : false }));
+  };
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  closeMenu = () => this.setState({ menuOpen: false });
+  openWaitlistFromMenu = (e) => { this.openWaitlist(e); this.closeMenu(); };
   setTabOverview = () => this.setState({ dashboardTab: 'overview' });
   setTabInvoices = () => this.setState({ dashboardTab: 'invoices' });
   setTabClients = () => this.setState({ dashboardTab: 'clients' });
@@ -484,6 +526,12 @@ class Component extends DCLogic {
     return {
       isMobile: this.state.isMobile,
       isDesktop: !this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      notMenuOpen: !this.state.menuOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      openWaitlistFromMenu: this.openWaitlistFromMenu,
+      menuAriaLabel: this.state.menuOpen ? 'Close menu' : 'Open menu',
       isOverviewTab: this.state.dashboardTab === 'overview',
       isInvoicesTab: this.state.dashboardTab === 'invoices',
       isClientsTab: this.state.dashboardTab === 'clients',
