@@ -2,3 +2,9 @@
 .thumbnail
 uploads/
 .vercel
+.deploy-*
+.deploy-chunks/
+.mcp-deploy-args.json
+.vercel-deploy-args.json
+deploy-args.json
+.vercel-deploy-payload.json
