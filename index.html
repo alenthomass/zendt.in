@@ -32,6 +32,23 @@
       .zendt-bg-fixed { background: #0A0A0A; }
       .zendt-features-section { background: #0A0A0A !important; }
       .zendt-cta-box { background: #0F0F0F !important; }
+      .zendt-page > section {
+        padding-top: 56px !important;
+        padding-bottom: 80px !important;
+        margin-bottom: 48px;
+      }
+      .zendt-page > section:first-of-type {
+        padding-top: 40px !important;
+      }
+      .zendt-page > section#cta {
+        margin-bottom: 32px;
+        padding-bottom: 64px !important;
+      }
+      .zendt-page > footer {
+        margin-top: 8px;
+        padding-top: 56px !important;
+        padding-bottom: 48px !important;
+      }
     }
     ::selection { background: #F5F5F5; color: #0A0A0A; }
     html { scroll-behavior: smooth; }
@@ -43,7 +60,7 @@
 </helmet>
 
 <div class="zendt-bg-fixed"></div>
-<div style="color:#F5F5F5; font-family:'Cairo',sans-serif; min-height:100vh; overflow-x:hidden; position:relative; z-index:1;">
+<div class="zendt-page" style="color:#F5F5F5; font-family:'Cairo',sans-serif; min-height:100vh; overflow-x:hidden; position:relative; z-index:1;">
 
   <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
   <nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px clamp(16px,5vw,48px); background:rgba(10,10,10,0.75); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.08);">
