@@ -45,11 +45,15 @@
         padding-bottom: 64px !important;
       }
       .zendt-page > footer {
-        margin-top: 8px;
-        padding-top: 56px !important;
-        padding-bottom: 48px !important;
+        margin-top: 0;
+        padding-top: 32px !important;
+        padding-bottom: 40px !important;
       }
+      .zendt-footer-full { display: none !important; }
+      .zendt-footer-minimal { display: flex !important; }
     }
+    .zendt-footer-minimal { display: none; flex-direction: column; gap: 16px; }
+    .zendt-footer-full { display: block; }
     ::selection { background: #F5F5F5; color: #0A0A0A; }
     html { scroll-behavior: smooth; }
     a { color: inherit; text-decoration: none; transition: opacity 0.15s ease; }
@@ -418,7 +422,7 @@
 
   <footer style="padding:48px clamp(20px,5vw,48px) 32px; border-top:1px solid rgba(255,255,255,0.08);">
     <div style="max-width:1200px; margin:0 auto;">
-      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div class="zendt-footer-full">
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:32px; margin-bottom:48px;">
           <div>
             <div style="display:flex; align-items:center; gap:9px; font-family:'Clash Display',sans-serif; font-weight:600; font-size:19px; letter-spacing:-0.02em; margin-bottom:12px;">
@@ -455,19 +459,17 @@
             <a href="/refund" style="font-size:13px; color:rgba(255,255,255,0.4);">Refund</a>
           </div>
         </div>
-      </sc-if>
-      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex; flex-direction:column; gap:16px;">
-          <div style="display:flex; align-items:center; gap:9px; font-family:'Clash Display',sans-serif; font-weight:600; font-size:19px; letter-spacing:-0.02em;">
-            <img src="/logo-transparent.png" alt="Zendt" style="width:28px; height:28px; display:block; object-fit:contain;">
-            Zendt
-          </div>
-          <p style="font-size:13px; color:rgba(255,255,255,0.45); max-width:280px; line-height:1.6; margin:0;">Invoicing and income tracking software for Indian freelancers with global clients.</p>
-          <div style="padding-top:20px; border-top:1px solid rgba(255,255,255,0.06);">
-            <span style="font-size:13px; color:rgba(255,255,255,0.4);">© 2026 Zendt</span>
-          </div>
+      </div>
+      <div class="zendt-footer-minimal">
+        <div style="display:flex; align-items:center; gap:9px; font-family:'Clash Display',sans-serif; font-weight:600; font-size:19px; letter-spacing:-0.02em;">
+          <img src="/logo-transparent.png" alt="Zendt" style="width:28px; height:28px; display:block; object-fit:contain;">
+          Zendt
         </div>
-      </sc-if>
+        <p style="font-size:13px; color:rgba(255,255,255,0.45); max-width:280px; line-height:1.6; margin:0;">Invoicing and income tracking software for Indian freelancers with global clients.</p>
+        <div style="padding-top:20px; border-top:1px solid rgba(255,255,255,0.06);">
+          <span style="font-size:13px; color:rgba(255,255,255,0.4);">© 2026 Zendt</span>
+        </div>
+      </div>
     </div>
   </footer>
 
