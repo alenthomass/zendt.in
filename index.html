@@ -395,7 +395,7 @@
     <div style="text-align:center; margin-bottom:clamp(36px,8vw,56px);">
       <div style="font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:16px;">Pricing</div>
       <h2 style="font-family:'Clash Display',sans-serif; font-size:clamp(28px,5vw,40px); font-weight:600; letter-spacing:-0.02em; margin:0 0 12px;">Simple SaaS pricing.<br><span style="color:#C9825A;">Pay for the toolkit.</span></h2>
-      <p style="font-size:15px; color:rgba(255,255,255,0.5); max-width:560px; margin:0 auto;">Three plans for freelancers and growing studios. Start free, upgrade when you need more. All prices in INR, billed monthly or annually.</p>
+      <p style="font-size:15px; color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">Planned pricing for when Zendt launches. Paid subscriptions are not available yet — join the waitlist for early access. All prices in INR, intended for monthly or annual billing.</p>
     </div>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; align-items:stretch;">
@@ -454,7 +454,7 @@
       </div>
     </div>
 
-    <p style="font-size:13px; color:rgba(255,255,255,0.4); text-align:center; max-width:640px; margin:28px auto 0; line-height:1.65;">Payment processing on client invoices is handled by Zwitch (RBI-licensed payment aggregator). Standard payment-aggregator fees apply on invoice collections and are separate from your Zendt subscription. See our <a href="/refund" style="color:#C9825A; text-decoration:underline;">Refund Policy</a> for subscription and invoice refund timelines.</p>
+    <p style="font-size:13px; color:rgba(255,255,255,0.4); text-align:center; max-width:640px; margin:28px auto 0; line-height:1.65;">Payment processing on client invoices is handled by Zwitch (RBI-authorized payment aggregator). Standard payment-aggregator fees apply on invoice collections and are separate from your Zendt subscription. See our <a href="/refund" style="color:#C9825A; text-decoration:underline;">Refund Policy</a> for subscription and invoice refund timelines.</p>
   </section>
 
   <section id="faq" style="padding:clamp(64px,10vw,120px) clamp(20px,5vw,48px); max-width:900px; margin:0 auto;">
@@ -519,7 +519,7 @@
           </div>
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center; padding-top:28px; border-top:1px solid rgba(255,255,255,0.06); flex-wrap:wrap; gap:12px;">
-          <span style="font-size:13px; color:rgba(255,255,255,0.4);">© 2026 Zendt</span>
+          <span style="font-size:13px; color:rgba(255,255,255,0.4);">© 2026 Zendt Payments Private Limited</span>
           <div style="display:flex; gap:20px;">
             <a href="/terms" style="font-size:13px; color:rgba(255,255,255,0.4);">Terms</a>
             <a href="/privacy" style="font-size:13px; color:rgba(255,255,255,0.4);">Privacy</a>
@@ -534,7 +534,12 @@
         </div>
         <p style="font-size:13px; color:rgba(255,255,255,0.45); max-width:280px; line-height:1.6; margin:0; text-align:center;">Invoicing and income tracking software for Indian freelancers with global clients.</p>
         <div style="width:100%; padding-top:20px; border-top:1px solid rgba(255,255,255,0.06); text-align:center;">
-          <span style="font-size:13px; color:rgba(255,255,255,0.4);">© 2026 Zendt</span>
+          <span style="font-size:13px; color:rgba(255,255,255,0.4);">© 2026 Zendt Payments Private Limited</span>
+          <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-top:14px;">
+            <a href="/terms" style="font-size:12px; color:rgba(255,255,255,0.4);">Terms</a>
+            <a href="/privacy" style="font-size:12px; color:rgba(255,255,255,0.4);">Privacy</a>
+            <a href="/refund" style="font-size:12px; color:rgba(255,255,255,0.4);">Refund</a>
+          </div>
         </div>
       </div>
     </div>
@@ -552,6 +557,7 @@
             <form onSubmit="{{ submitWaitlist }}" style="display:flex; flex-direction:column; gap:12px;">
               <input type="email" required="true" placeholder="you@example.com" value="{{ email }}" onChange="{{ setEmail }}" style="width:100%; box-sizing:border-box; background:#0A0A0A; border:1px solid rgba(255,255,255,0.14); border-radius:8px; padding:13px 16px; font-size:14px; color:#F5F5F5; font-family:'Cairo',sans-serif;">
               <button type="submit" style="font-size:15px; font-weight:600; background:#F5F5F5; color:#0A0A0A; padding:14px; border:none; border-radius:8px; cursor:pointer; font-family:'Cairo',sans-serif; transition:transform 0.2s ease;" style-hover="transform:translateY(-1px);">Join the waitlist</button>
+              <p style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.55; margin:0; text-align:center;">By joining, you agree we may email you about Zendt. See our <a href="/privacy" style="color:#C9825A; text-decoration:underline;">Privacy Policy</a>.</p>
             </form>
           </div>
         </sc-if>
@@ -599,7 +605,7 @@ class Component extends DCLogic {
     { q: 'Can I invoice directly from a project?', a: 'Yes. Add your client, line items, and currency, then send a polished invoice in seconds, as a draft or right away.' },
     { q: "How do I track what's been paid and what's outstanding?", a: "Every invoice shows its status, sent, viewed, or paid, and rolls up into your income overview, so you always know what's coming in and what's still pending." },
     { q: 'Can I track earnings and export for my CA?', a: "Yes. The income dashboard shows what you've billed, by client, project, or month, ready to hand off at tax time." },
-    { q: 'Who processes payments on invoices sent through Zendt?', a: 'Zendt is software, we help you create invoices, track clients, and manage your income. When a client pays an invoice, payment processing is handled by Zwitch, a licensed payment aggregator regulated by the RBI. Zendt does not hold, move, or have custody of your funds at any point.' },
+    { q: 'Who processes payments on invoices sent through Zendt?', a: 'Zendt is software, we help you create invoices, track clients, and manage your income. When a client pays an invoice, payment processing is handled by Zwitch, an RBI-authorized payment aggregator. Zendt does not hold, move, or have custody of your funds at any point.' },
     { q: 'Why does my invoice support international card payments?', a: "Many of your clients, agencies, companies, and platforms, pay by credit or debit card as their default method. Card acceptance on your invoices is enabled through Zwitch's licensed payment infrastructure, so you can get paid the way your clients actually prefer to pay, without needing a separate merchant account yourself." }
   ];
   renderVals() {
