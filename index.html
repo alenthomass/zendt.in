@@ -597,7 +597,6 @@ class Component extends DCLogic {
   setEmail = (e) => this.setState({ email: e.target.value });
   submitWaitlist = (e) => { e.preventDefault(); this.setState({ submitted: true }); };
   faqData = [
-    { q: 'How much does Zendt cost?', a: 'Starter is free (5 clients, 10 invoices/month). Pro is ₹799/month or ₹7,990/year — unlimited clients and invoices, milestone billing, full dashboard, and card payments. Business is ₹1,499/month or ₹14,990/year — everything in Pro plus team seats, multi-currency invoicing, CA-ready exports, and branded templates. Payment processing fees on client collections are separate and handled by Zwitch.' },
     { q: 'What is Zendt?', a: "Zendt is software, a toolkit for invoicing, client management, and income tracking, built for Indian freelancers working with clients around the world. We're not a bank, and we don't hold or move your money." },
     { q: "What's included in the toolkit?", a: "Invoicing, client tracking, milestone billing, and an income dashboard, all in one workspace, so you're not switching between a spreadsheet, an invoicing tool, and a separate way of tracking who owes you what." },
     { q: 'Can I invoice directly from a project?', a: 'Yes. Add your client, line items, and currency, then send a polished invoice in seconds, as a draft or right away.' },
