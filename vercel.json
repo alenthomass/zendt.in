@@ -24,10 +24,10 @@
     }
   ],
   "rewrites": [
-    { "source": "/privacy", "destination": "/Privacy.dc.html" },
-    { "source": "/terms", "destination": "/Terms.dc.html" },
-    { "source": "/refund", "destination": "/Refund.dc.html" },
-    { "source": "/about", "destination": "/About.dc.html" },
-    { "source": "/contact", "destination": "/Contact.dc.html" }
+    { "source": "/privacy", "destination": "/Privacy.dc" },
+    { "source": "/terms", "destination": "/Terms.dc" },
+    { "source": "/refund", "destination": "/Refund.dc" },
+    { "source": "/about", "destination": "/About.dc" },
+    { "source": "/contact", "destination": "/Contact.dc" }
   ]
 }
